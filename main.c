@@ -4,7 +4,8 @@
 int main(int argc, char *argv[])
 {
     printf("Hello World!\n");
-    scale_input();
+    //scale_input();
+    sumN_input();
     return 0;
 }
 
