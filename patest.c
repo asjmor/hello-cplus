@@ -98,8 +98,111 @@ void pinyin_output(int sum)
     printf("\n");
 }
 
-int main(int argc, char *argv[])
+
+void pat_input()
 {
-    sumN_input();
-    return 0;
+    char tmp[100];
+
+    int n=1;
+    int i=0;
+    scanf("%d",&n);
+    if(n>10)
+        n=10;
+    char result[1000];
+
+    while(1)
+    {
+        if(i>=n)
+            break;
+        scanf("%s",&tmp);
+        char res[3];
+        pat(tmp,res);
+        if(memcmp(res,"NO",2)==0)
+        {
+            char ttmp[100];
+            patChange(tmp,ttmp);
+            pat(ttmp,res);
+        }
+
+        strcat(result,res);
+        strcat(result,"\n");
+        i++;
+    }
+    printf(result);
 }
+
+void pat(char *content,char*res)
+{
+    int len= strlen((content));
+    int numOfP=0;
+    int numOfT=0;
+    for(int i=0;i<len;++i)
+    {
+        if(content[i]!='A'&&content[i]!='P'&&content[i]!='T')
+        {
+            strcpy(res,"NO");
+            return;
+        }
+        if(content[i]=='P')
+        {
+            numOfP++;
+            if(i>len-3)
+            {
+                strcpy(res,"NO");
+                return;
+            }
+            if(content[i+1]!='A')
+            {
+                strcpy(res,"NO");
+                return;
+            }
+            if(content[i+2]!='T')
+            {
+                strcpy(res,"NO");
+                return;
+            }
+        }
+        if(content[i]=='T')
+        {
+            numOfT++;
+        }
+    }
+    if(numOfP>1)
+    {
+        strcpy(res,"NO");
+        return;
+    }
+    if(numOfT>1)
+    {
+        strcpy(res,"NO");
+        return;
+    }
+    strcpy(res,"YES");
+    return;
+}
+
+void patChange(char *old, char *change)
+{
+    int len =strlen(old);
+    int index_p = 0;
+    int index_t = 0;
+    int j=0;
+    for(int i=0;i<len;++i)
+    {
+        if(old[i]=='P')
+        {
+            index_p = i;
+        }
+        if(old[i]=='T')
+            index_t = i;
+        if(i<(len-1)&&old[i+1]=='T'&&old[i]=='A')
+        {
+            continue;
+        }
+        if(i>(len-index_p-1))
+            continue;
+        change[j]=old[i];
+        ++j;
+    }
+}
+

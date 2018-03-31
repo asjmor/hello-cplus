@@ -3,9 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("Hello World!\n");
-    //scale_input();
-    sumN_input();
+    pat_input();
     return 0;
 }
 
