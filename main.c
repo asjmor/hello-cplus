@@ -1,9 +1,9 @@
 ﻿#include "patest.h"
-#include <stdio.h>
+#include "stdio.h"
 
 int main(int argc, char *argv[])
 {
-    pat_input();
+    input_1004();
     return 0;
 }
 
