@@ -4,7 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.c \
-    patest.c
+    patest.c \
+    threadlocktest.cpp
 
 HEADERS += \
-    patest.h
+    patest.h \
+    threadlocktest.h

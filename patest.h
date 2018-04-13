@@ -64,7 +64,7 @@ NO
 NO
 */
 void pat_input();
-void pat(char*content);
+void pat(char*content,char *res);
 void patChange(char *old,char*change); //aPbATca 转化为aPbTc
 
 /*
